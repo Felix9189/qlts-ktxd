@@ -1,0 +1,11 @@
+<%- include ("partials/header.ejs") %>
+
+<form action="/thongke" method="post">
+    <h1><%= message %></h1>
+    <h2>Thống kê tài sản:</h2>  
+    <input type="text" placeholder="Điền vị trí" name="inputThongKe" value= "" style="width: 310px;" required><button>Thống kê theo vị trí</button>
+    <br>
+    <!-- <label for="thongke"><p>Có <%= "Số lượng tìm thấy" %> - <%= "giá trị tìm" %> </p></label> -->
+</form>
+
+<%- include ("partials/footer.ejs") %>

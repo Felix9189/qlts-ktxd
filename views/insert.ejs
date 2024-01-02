@@ -1,0 +1,142 @@
+<%- include ("partials/header.ejs") %>
+
+<script>
+    let data = [{
+        item: 'Công nghệ thông tin',
+        subitems: ['Máy tính', 'Màn hình', 'Camera', 'Router', 'Switch', 'Máy in - Scan - Photo', 'Thiết bị khác','Firewall']
+      },
+      {
+        item: 'Thiết bị văn phòng',
+        subitems: ['Bàn', 'Ghế', 'Tủ', 'Quạt trần']
+      },
+      {
+        item: 'Hệ thống điện',
+        subitems: ['Máy phát điện', 'rabbit', 'mouse', 'lion']
+      },
+      {
+        item: 'Hệ thống phòng cháy chữa cháy',
+        subitems: ['Tủ báo cháy trung tâm', 'Đầu báo cháy', 'Chuông', 'Bình chữa cháy'],
+      },
+    ];
+
+    let dataViTri = [{vitri: ['B203', 'B204']}];
+
+    window.onload = function() {
+      var itemSel = document.getElementById("plTS");
+      var subitemSel = document.getElementById("lTS");
+      var ttSel = document.getElementById("ttTS");
+      var vtSel = document.getElementById("vtTS");
+
+         for (var x in data) {
+        itemSel.options[itemSel.options.length] = new Option(data[x].item, x);
+      }
+
+      itemSel.onchange = function() {
+        //empty 
+        subitemSel.length = 1;
+        //display correct values
+        for (var y of data[this.value].subitems) {
+          subitemSel.options[subitemSel.options.length] = new Option(y, y);
+        }
+        
+      }
+    }
+
+</script>
+
+<form action="/add" method="post">
+  <div class="grid-container-insert">
+    <div class="grid-item-insert item1"><h1 style="text-align: center;">Thêm tài sản</h1></div>
+    <div class="grid-item-insert item2" style="text-align: center;">
+      <div style="display: grid; grid-template-columns: 50% 50%;">
+        <div style="text-align: right;">
+          <label style="grid-column: 1;" for="plTS">Danh mục tài sản</label>
+        </div>
+        <div style="text-align: left;">
+          <select style="grid-column: 1;" id="plTS" name="plTS" autofocus required style="width: 453px;">
+            <option value="" selected="selected">Please select</option>
+          </select><br>
+        </div>
+      </div>
+      <br>
+      <div style="display: grid; grid-template-columns: 50% 50%;">
+        <div style="text-align: right;">
+          <label for="lTS">Loại tài sản</label>
+        </div>
+        <div style="text-align: left;">
+          <select id="lTS" name="lTS" required style="width: 310px;">
+            <option value="" selected="selected">Please select</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="grid-item-insert item3" style="text-align: right;">
+      <label for="maTS">Mã tài sản:</label>   
+      <input type="text" name="maTS" value= "RANDOM" readonly aria-disabled="true" style="background-color: red; width: 310px; text-align: center;">
+          <br><br>
+      <label for="tenTS">Tên tài sản:</label>   
+      <input type="text" name="tenTS" value="" required style="width: 310px;">
+          <br><br>
+      <label for="donviTinh">Đơn vị tính:</label>
+          <select id="donviTinh" name="donviTinh" required style="width: 310px;">
+              <option value="" selected="selected">Please select đơn vị</option>
+              <option value="Cái" >Cái</option>
+              <option value="Bộ" >Bộ</option>
+              <option value="Hệ thống" >Hệ thống</option>
+          </select>
+              <br><br>
+        <label for="ttTS">Trạng thái tài sản:</label>   
+              <!-- <input type="text" name="ttTS" value="" > -->
+          <select id="ttTS" name="ttTS" required style="width: 310px;">
+              <option value="" selected="selected">Please select trạng thái</option>
+              <option value="Tốt" >Tốt</option>
+              <option value="Hỏng" >Hỏng</option>
+          </select>
+    </div>  
+    <div class="grid-item-insert item4" style="text-align: left;">
+      <label for="vtTS">Vị trí tài sản:</label>   
+              <!-- <input type="text" name="vtTS" value="" > -->
+          <select id="vtTS" name="vtTS" required style="width: 310px;">
+              <option value="" selected="selected">Please select vị trí</option>
+              <option value="A101" >A101</option>
+              <option value="A103" >A103</option>
+              <option value="A104" >A104</option>
+              <option value="A203" >A203</option>
+              <option value="A301" >A301</option>
+              <option value="A503" >A503</option>
+              <option value="A601" >A601</option>
+              <option value="A602" >A602</option>
+              <option value="A604" >A604</option>
+              <option value="B102" >B102</option>
+              <option value="B203" >B203</option>
+              <option value="B204" >B204</option>
+              <option value="B302" >B302</option>
+          </select>
+      <br><br>
+      <label><%= new Date() %></label> <br>
+      <!-- <label>{<%= currentfull %>}</label>   -->
+      <br>
+      <label for="childAssets">Tài sản con:</label>   
+      <input type="text" size="40" name="childAssets" style="width: 310px;" autocomplete="off">
+      <div style="text-align: center; margin-right: 40px;">
+        <label style="font-size: 1rem;"><em>***Thêm barcode của các tài sản con vào ô. 
+          Mỗi barcode cách nhau dấu phẩy</em></label>  
+      </div>
+      <label for="slTSThem">Số lượng thêm:</label>   
+      <input type="text" size="10" name="slTSThem" style="width: 310px;" required>
+    </div>
+    <div class="grid-item-insert item5">
+      <button class="button button1" type="submit" style="width: 310px;" disabled hidden>Submit</button>
+    </div>
+    <!-- <div class="grid-item-insert item6">6</div>   -->
+  </div>
+</form>
+<form action="/addon" method="post">
+  <div>
+    <label for="addonID">Thêm mã danh mục tài sản:</label>
+    <input type="text" name="addonID" placeholder="chỉ dành cho admin" size="40" value="" autocomplete="off" required>
+    <button class="button button1" type="submit"  disabled hidden>Create</button> 
+    <label for="addonID"><em>Định dạng mẫu 0*0*: * từ 1->9</em></label>
+  </div>
+</form>  
+<%- include ("partials/footer.ejs") %>

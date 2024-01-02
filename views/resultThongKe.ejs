@@ -1,0 +1,34 @@
+<%- include ("partials/header.ejs") %>
+
+<!-- <div class="allData"> -->
+    <h1>Ví trí: <%= location %></h1>
+    <h1>Total Assets: <%= total %></h1>
+  
+    <div class="grid-container-thongke">
+        <!-- Title -->
+        <div class="grid-item-thongke" id="title">Số thứ tự</div>
+        <div class="grid-item-thongke" id="title">Mã tài sản</div>
+        <div class="grid-item-thongke" id="title">Tên tài sản</div>
+        <div class="grid-item-thongke" id="title">Đơn vị tính</div>  
+        <div class="grid-item-thongke" id="title">Phân loại tài sản</div>
+        <div class="grid-item-thongke" id="title">Loại tài sản</div>
+        <div class="grid-item-thongke" id="title">Trạng thái</div>  
+        <div class="grid-item-thongke" id="title">Vị trí</div>
+        <div class="grid-item-thongke" id="title">Ngày nhập</div>
+        <div class="grid-item-thongke" id="title">Tài sản con</div>
+        <div class="grid-item-thongke" id="title"></div>
+        <!-- Show data -->
+        <% for(i=0; i< total; i++) { %>
+            <div class="grid-item-thongke"><%= i+1 %></div>
+            <div class="grid-item-thongke"><%= assets[i]['id']%></div>
+            <div class="grid-item-thongke"><%= assets[i]['assets_name']%></div>
+            <div class="grid-item-thongke"><%= assets[i]['unit']%></div>  
+            <div class="grid-item-thongke"><%= assets[i]['assets_root']%></div>
+            <div class="grid-item-thongke"><%= assets[i]['assets_type']%></div>
+            <div class="grid-item-thongke"><%= assets[i]['status']%></div>  
+            <div class="grid-item-thongke"><%= assets[i]['location']%></div>
+            <div class="grid-item-thongke"><%= assets[i]['date_import']%></div>
+            <div class="grid-item-thongke"><%= assets[i]['assets_child']%></div>
+            <button class="button button1" type="submit">Điều chỉnh</button>
+        <% } %> 
+<%- include ("partials/footer.ejs") %>

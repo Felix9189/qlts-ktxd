@@ -1,0 +1,15 @@
+<%- include ("partials/header.ejs") %>
+<h1>Thông tin:</h1>
+<div  class="grid-container-search">
+    <div class="grid-item-search" style="text-align: right;"><label>Mã tài sản: </label></div><div class="grid-item-search"><em class="showAll"><%= assets.id %></em></div>
+    <div class="grid-item-search" style="text-align: right;"><label>Tên tài sản: </label></div><div class="grid-item-search"><em class="showAll"><%= assets.assets_name %></em></div>
+    <div class="grid-item-search" style="text-align: right;"><label>Đơn vị tính: </label></div><div class="grid-item-search"><em class="showAll"><%= assets.unit %></em></div>
+    <div class="grid-item-search" style="text-align: right;"><label>Phân loại tài sản: </label></div class="grid-item-search"><div><em class="showAll"><%= assets.assets_root %></em></div>
+    <div class="grid-item-search" style="text-align: right;"><label>Loại tài sản: </label></div><div class="grid-item-search"><em class="showAll"><%= assets.assets_type %></em></div>
+    <div class="grid-item-search" style="text-align: right;"><label>Trạng thái: </label></div><div class="grid-item-search"><em class="showAll"><%= assets.status %></em></div>
+    <div class="grid-item-search" style="text-align: right;"><label>Vị trí: </label></div><div class="grid-item-search"><em class="showAll"><%= assets.location %></em></div>
+    <div class="grid-item-search" style="text-align: right;"><label>Ngày nhập: </label></div><div class="grid-item-search"><em class="showAll"><%= assets.date_import %></em></div>
+    <div class="grid-item-search" style="text-align: right;"><label>Tài sản con: </label></div><div class="grid-item-search"><em class="showAll"><%= assets.child_assets %></em></div>
+    <div class="grid-item-search search-item3" style="text-align: center;;"><button class="button button1" type="submit" style="width: 300px;">Điều chỉnh</button></div>
+</div>
+<%- include ("partials/footer.ejs") %>
